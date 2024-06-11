@@ -1,4 +1,4 @@
-import "../../Styles/index.css";
+import "../../styles/index.css";
 import { Form, Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types"
 import { useState } from "react";

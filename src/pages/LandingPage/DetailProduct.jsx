@@ -1,12 +1,12 @@
-import BannerHeader from "../common/Banner/BannerHeader";
+import BannerHeader from "../../common/Banner/BannerHeader";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Products from "../assets/data/ProductList.jsx";
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import NavDescription from "../common/NavTabs/NavDescription.jsx"
+import Products from "../../assets/data/ProductList.jsx";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import NavDescription from "../../common/NavTabs/NavDescription.jsx";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/cartSlice.jsx";
+import { addToCart } from "../../redux/cartSlice.jsx";
 import { toast } from "react-toastify";
 
 const formatToIDR = (price) => {
@@ -36,15 +36,14 @@ const DetailProduct = () => {
   }
   const { title, summary, image, price, description, category } = product;
 
-   const handlePlus = () => {
-     setQuantity((prevQuantity) => prevQuantity + 1);
-   };
-
-   const handleMin = () => {
-     setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  const handlePlus = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
-  
-  
+
+  const handleMin = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
+
   const handleAddToCart = (product) => {
     dispatch(
       addToCart({
@@ -54,7 +53,7 @@ const DetailProduct = () => {
       })
     );
 
-     toast.success("Product has been added to cart");
+    toast.success("Product has been added to cart");
   };
 
   return (

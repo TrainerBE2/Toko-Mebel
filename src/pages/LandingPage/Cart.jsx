@@ -1,16 +1,9 @@
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Image,
-  Form,
-} from "react-bootstrap";
-import BannerHeader from "../common/Banner/BannerHeader.jsx";
+import { Container, Row, Col, Button, Image, Form } from "react-bootstrap";
+import BannerHeader from "../../common/Banner/BannerHeader.jsx";
 import { Link } from "react-router-dom";
-import "../Styles/index.css";
+import "../../styles/index.css";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, updateQuantity } from "../redux/cartSlice.jsx";
+import { removeItem, updateQuantity } from "../../redux/cartSlice.jsx";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 
@@ -73,18 +66,18 @@ const Cart = () => {
 
   const totalPriceWithShipping = totalPrice + shippingPrice;
 
- useEffect(() => {
-   const validateForm = () => {
-     if (email && name && city && address) {
-       setIsFormValid(true);
-     } else {
-       setIsFormValid(false);
-     }
-   };
-   validateForm();
- }, [email, name, city, address]);
+  useEffect(() => {
+    const validateForm = () => {
+      if (email && name && city && address) {
+        setIsFormValid(true);
+      } else {
+        setIsFormValid(false);
+      }
+    };
+    validateForm();
+  }, [email, name, city, address]);
   const handlePayment = async () => {
-    alert("your payment has been processed")
+    alert("your payment has been processed");
   };
 
   return (
@@ -106,7 +99,7 @@ const Cart = () => {
               </div>
               <Row
                 xs="3"
-                className="g-0 text-uppercase d-md-flex d-none text-center"
+                className="g-0 text-uppercase d-md-flex d-none text-center mb-3"
               >
                 {TableHeader.map((header, index) => (
                   <Col
@@ -209,7 +202,7 @@ const Cart = () => {
             </Col>
             <Col
               lg="4"
-              className="p-3 bg-dark-subtle h-max-content max-content"
+              className="p-3 bg-dark-subtle h-max-content"
             >
               <div className="title__shipping d-flex justify-content-between align-items-center w-100 pb-3 mb-3 border-bottom border-2 border-secondary">
                 <h1 className="m-0 fs-5 fw-bold fm-2">Shipping Information</h1>
@@ -301,7 +294,8 @@ const Cart = () => {
                   <Form.Group className="mb-2 fs-7">
                     <Button
                       className="w-100 text-uppercase fw-semibold"
-                      onClick={handlePayment} disabled={!isFormValid}
+                      onClick={handlePayment}
+                      disabled={!isFormValid}
                     >
                       Checkout
                     </Button>

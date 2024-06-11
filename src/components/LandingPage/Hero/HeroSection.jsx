@@ -1,10 +1,10 @@
 
-import HeroImg1 from "../../assets/Image/Shofa/single-sofa-03.png";
-import HeroImg2 from "../../assets/Image/Chair/arm-chair-06.png";
+import HeroImg1 from "../../../assets/Image/Shofa/single-sofa-03.png";
+import HeroImg2 from "../../../assets/Image/Chair/arm-chair-06.png";
 import {Row, Col} from "react-bootstrap"
 import "./Hero.css";
 import { NavLink } from "react-router-dom"
-import "../../Styles/index.css";
+import "../../../styles/index.css";
 
 const HeroSection = () => {
   return (

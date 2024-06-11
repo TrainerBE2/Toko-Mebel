@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button, Carousel} from "react-bootstrap";
-import ImgProject1 from "../../assets/Image/Slide/img_project1.jpg";
-import ImgProject2 from "../../assets/Image/Slide/img_project2.jpg";
-import ImgProject3 from "../../assets/Image/Slide/img_project3.jpg";
+import ImgProject1 from "../../../assets/Image/Slide/img_project1.jpg";
+import ImgProject2 from "../../../assets/Image/Slide/img_project2.jpg";
+import ImgProject3 from "../../../assets/Image/Slide/img_project3.jpg";
 import "./Recent.css";
 import { useState } from "react";
 

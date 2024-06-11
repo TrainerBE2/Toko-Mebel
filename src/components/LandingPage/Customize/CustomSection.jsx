@@ -1,11 +1,11 @@
 import "./Customize.css";
-import "../../Styles/index.css";
+import "../../../styles/index.css";
 import { Container, Row, Col, Button, Card, Image } from "react-bootstrap";
-import CustomizeImg1 from "../../assets/Image/Chair/arm-chair-01-blue.png";
-import CustomizeImg2 from "../../assets/Image/Chair/arm-chair-01-green.png";
-import CustomizeImg3 from "../../assets/Image/Chair/arm-chair-01-grey.png";
-import CustomizeImg4 from "../../assets/Image/Chair/arm-chair-01-red.png";
-import SketchImg from "../../assets/Image/sketch.jpg";
+import CustomizeImg1 from "../../../assets/Image/Chair/arm-chair-01-blue.png";
+import CustomizeImg2 from "../../../assets/Image/Chair/arm-chair-01-green.png";
+import CustomizeImg3 from "../../../assets/Image/Chair/arm-chair-01-grey.png";
+import CustomizeImg4 from "../../../assets/Image/Chair/arm-chair-01-red.png";
+import SketchImg from "../../../assets/Image/sketch.jpg";
 import { useState } from "react";
 
 const CustomSection = () => {

@@ -1,13 +1,12 @@
-import "./BestSeller.css"
-import { Container, Row, Col, Card, Button } from "react-bootstrap"
-import Products from "../../assets/data/ProductList"
-import Categories from "../../assets/data/Category.jsx"
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import "./BestSeller.css";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import Products from "../../../assets/data/ProductList.jsx";
+import Categories from "../../../assets/data/Category.jsx";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/cartSlice.jsx";
+import { addToCart } from "../../../redux/cartSlice.jsx";
 import { toast } from "react-toastify";
-
 
 const formatToIDR = (price) => {
   return new Intl.NumberFormat("id-ID", {
@@ -16,7 +15,6 @@ const formatToIDR = (price) => {
   }).format(price);
 };
 
-
 const BestSellerSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Chair");
   const dispatch = useDispatch();
@@ -24,7 +22,7 @@ const BestSellerSection = () => {
   const filteredProducts = selectedCategory
     ? Products.filter((product) => product.category === selectedCategory)
     : Products;
-  
+
   const handleAddToCart = (product) => {
     dispatch(
       addToCart({
@@ -33,7 +31,7 @@ const BestSellerSection = () => {
         totalPrice: product.price,
       })
     );
-    
+
     toast.success("Product has been added to cart");
   };
   return (
@@ -83,7 +81,11 @@ const BestSellerSection = () => {
                         variant="top"
                         src={product.image}
                         alt={product.title}
-                        className={`d-block w-100 rounded-0 ${selectedCategory === "Bed" ? "object-fit-cover": "object-fit-contain"}`}
+                        className={`d-block w-100 rounded-0 ${
+                          selectedCategory === "Bed"
+                            ? "object-fit-cover"
+                            : "object-fit-contain"
+                        }`}
                       />
                       <Card.Footer className="d-flex align-items-center justify-content-between p-0 bg-light position-relative z-1 w-100 border-2 rounded-0">
                         <p className="mb-0 ms-2 ms-md-3">
@@ -117,6 +119,6 @@ const BestSellerSection = () => {
       </section>
     </>
   );
-}
+};
 
-export default BestSellerSection
+export default BestSellerSection;

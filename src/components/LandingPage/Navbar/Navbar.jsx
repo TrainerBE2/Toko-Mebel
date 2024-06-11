@@ -48,10 +48,10 @@ const NavbarPage = () => {
             Toko<span className="text-warning">Mebel</span>
           </HashLink>
           <div className="ms-auto me-3 d-flex d-lg-none gap-3 align-items-center justify-content-center">
-            <NavLink to="/account" className="nav-link">
+            <NavLink to="account" className="nav-link">
               <i className="ri-user-fill fs-6"></i>
             </NavLink>
-            <NavLink to="/cart" className="nav-link position-relative">
+            <NavLink to="cart" className="nav-link position-relative">
               <i className="ri-shopping-bag-fill fs-6"></i>
               <span className="indicator__cart">{totalItems}</span>
             </NavLink>
@@ -62,7 +62,7 @@ const NavbarPage = () => {
               <HashLink to="/home/#bestseller" className="nav-link">
                 Best Seller
               </HashLink>
-              <NavLink to="/shop" className="nav-link">
+              <NavLink to="shop" className="nav-link">
                 Shop
               </NavLink>
               <HashLink to="/home/#customize" className="nav-link">
@@ -74,12 +74,12 @@ const NavbarPage = () => {
             </Nav>
           </Navbar.Collapse>
           <div className="d-none d-lg-flex gap-3 align-items-center justify-content-center">
-            <NavLink to="/account" className="nav-link ms-auto">
+            <NavLink to="account" className="nav-link ms-auto">
               <i className="ri-user-fill fs-6"></i>
             </NavLink>
             <span>l</span>
             <NavLink
-              to="/cart"
+              to="cart"
               className="nav-link me-auto position-relative"
             >
               <i className="ri-shopping-bag-fill fs-6 me-1"></i>

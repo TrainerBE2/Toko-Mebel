@@ -1,13 +1,16 @@
 import "./Services.css";
-import "../../Styles/index.css";
+import "../../../styles/index.css";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import ListServices from "../../assets/data/ListService.jsx"
-import PropTypes from "prop-types"
+import ListServices from "../../../assets/data/ListService.jsx";
+import PropTypes from "prop-types";
 
 const CardService = (props) => {
   return (
     <Col data-aos="fade-up" data-aos-delay={props.delay}>
-      <Card className="w-100 p-3 bg-secondary-subtle fm-2 border-0" style={{ width: "100%" }}>
+      <Card
+        className="w-100 p-3 bg-secondary-subtle fm-2 border-0"
+        style={{ width: "100%" }}
+      >
         <div className="d-flex align-items-start justify-content-center gap-3 flex-column flex-lg-row">
           <div className="icon__service p-3 text-bg-dark d-flex align-items-center justify-content-center rounded-circle">
             <i className={props.icons}></i>
@@ -32,10 +35,7 @@ CardService.propTypes = {
 const ServiceSection = () => {
   return (
     <>
-      <section
-        id="service"
-        className="py-4 bg-white overflow-hidden"
-      >
+      <section id="service" className="py-4 bg-white overflow-hidden">
         <Container>
           <div
             className="title text-uppercase max-content ms-auto mb-4"

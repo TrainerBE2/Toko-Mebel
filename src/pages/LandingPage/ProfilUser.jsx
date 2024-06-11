@@ -1,7 +1,7 @@
-import "../Styles/index.css";
-import BannerHeader from "../common/Banner/BannerHeader";
+import "../../styles/index.css";
+import BannerHeader from "../../common/Banner/BannerHeader";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const ProfilUser = () => {
   return (

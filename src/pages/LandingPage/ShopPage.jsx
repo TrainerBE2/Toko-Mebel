@@ -1,17 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import "../Styles/index.css";
-import { Container, Row, Col, Button, Card} from "react-bootstrap";
-import Categories from "../assets/data/Category.jsx";
-import Stylis from "../assets/data/Style.jsx";
-import Sizes from "../assets/data/Sizes.jsx";
-import Products from "../assets/data/ProductList.jsx";
-import BannerHeader from "../common/Banner/BannerHeader.jsx";
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import "../../styles/index.css";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import Categories from "../../assets/data/Category.jsx";
+import Stylis from "../../assets/data/Style.jsx";
+import Sizes from "../../assets/data/Sizes.jsx";
+import Products from "../../assets/data/ProductList.jsx";
+import BannerHeader from "../../common/Banner/BannerHeader.jsx";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/cartSlice.jsx";
+import { addToCart } from "../../redux/cartSlice.jsx";
 import { toast } from "react-toastify";
-
 
 const formatToIDR = (price) => {
   return new Intl.NumberFormat("id-ID", {
@@ -29,19 +28,19 @@ const ShopPage = () => {
 
   const dispatch = useDispatch();
 
-   const filterProducts = () => {
-     const keyword = searchKeyword.toLowerCase();
-     const filtered = Products.filter(
-       (product) =>
-         (selectedCategory ? product.category === selectedCategory : true) &&
-         (selectedStyle ? product.style === selectedStyle : true) &&
-         (selectedSize
-           ? getSizeFromSummary(product.summary) < selectedSize
-           : true) &&
-         (product.title.toLowerCase().includes(keyword) ||
-           product.summary.toLowerCase().includes(keyword))
-     );
-     setFilteredProducts(filtered);
+  const filterProducts = () => {
+    const keyword = searchKeyword.toLowerCase();
+    const filtered = Products.filter(
+      (product) =>
+        (selectedCategory ? product.category === selectedCategory : true) &&
+        (selectedStyle ? product.style === selectedStyle : true) &&
+        (selectedSize
+          ? getSizeFromSummary(product.summary) < selectedSize
+          : true) &&
+        (product.title.toLowerCase().includes(keyword) ||
+          product.summary.toLowerCase().includes(keyword))
+    );
+    setFilteredProducts(filtered);
   };
   const handleSearch = (e) => {
     setSearchKeyword(e.target.value);
@@ -55,7 +54,7 @@ const ShopPage = () => {
     setSelectedCategory(category);
     setSearchKeyword("");
     setSelectedStyle("");
-    setSelectedSize(null); 
+    setSelectedSize(null);
   };
 
   const handleStyle = (style) => {
@@ -75,7 +74,7 @@ const ShopPage = () => {
     setSelectedStyle("");
     setSelectedSize(null);
     setSearchKeyword("");
-  }
+  };
 
   const handleAddToCart = (product) => {
     dispatch(
@@ -84,7 +83,7 @@ const ShopPage = () => {
         quantity: 1,
         totalPrice: product.price,
       })
-    )
+    );
     toast.success("Product has been added to cart");
   };
 
@@ -100,7 +99,7 @@ const ShopPage = () => {
               data-aos="fade-right"
             >
               <div className="category__product">
-                <h1 className="fw-semibold fs-5 fm-4">Categories:</h1>
+                <h1 className="fw-semibold fs-5 fm-4 mb-1">Categories:</h1>
                 <Row className="g-1 g-lg-2">
                   {Categories.map((category, index) => (
                     <Col key={index}>
@@ -122,7 +121,7 @@ const ShopPage = () => {
                 </Row>
               </div>
               <div className="design__product mt-3">
-                <h1 className="fw-semibold fs-5 fm-4">Style:</h1>
+                <h1 className="fw-semibold fs-5 fm-4 mb-1">Style:</h1>
                 <Row className="g-1 g-lg-2">
                   {Stylis.map((style, index) => (
                     <Col key={index}>
@@ -143,7 +142,7 @@ const ShopPage = () => {
                 </Row>
               </div>
               <div className="size__Product mt-3">
-                <h1 className="fw-semibold fs-5 fm-4">Sizes:</h1>
+                <h1 className="fw-semibold fs-5 fm-4 mb-1">Sizes:</h1>
                 <Row className="g-1 g-lg-2">
                   {Sizes.map((size, index) => (
                     <Col key={index}>
@@ -218,7 +217,7 @@ const ShopPage = () => {
                                 product.category === "Bed"
                                   ? "object-fit-cover"
                                   : "object-fit-contain"
-                                }`}
+                              }`}
                             />
                             <Card.Footer className="d-flex align-items-center justify-content-between p-0 bg-light position-relative z-1 w-100 border-2 rounded-0">
                               <p className="mb-0 ms-3 ms-md-2 fs-7">
