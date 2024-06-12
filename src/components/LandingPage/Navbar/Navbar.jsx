@@ -42,7 +42,7 @@ const NavbarPage = () => {
         <Container>
           <HashLink
             smooth
-            to="/home/#home"
+            to="/"
             className="navbar-brand fw-bold fs-4 m-0 p-0 fm-1"
           >
             Toko<span className="text-warning">Mebel</span>
