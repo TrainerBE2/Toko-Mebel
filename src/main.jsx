@@ -4,12 +4,12 @@ import "remixicon/fonts/remixicon.css";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./styles/index.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "react-toastify/dist/ReactToastify.css";
+import "./styles/index.css";
 
 AOS.init();
 AOS.init({
