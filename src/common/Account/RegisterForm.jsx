@@ -15,7 +15,7 @@ export const RegisterForm = ({ toggleCard }) => {
     setIsConfirmPassword(!isConfirmPassword);
   };
   return (
-    <Card className="bg-light p-3 mx-auto text-bg-dark border-0 w-100">
+    <Card className="bg-light p-3 mx-auto text-bg-dark border-0 w-100" data-aos="zoom-in">
       <Card.Img 
         className="d-block mx-auto my-3"
         style={{width: '300px'}}

@@ -12,12 +12,12 @@ const LandingRouters = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="home"/>} />
-      <Route path="home" element={<HomePage />} />
-      <Route path="shop" element={<ShopPage />} />
-      <Route path="shop/:id" element={<DetailProduct />} />
-      <Route path="account" element={<AccountPage />} />
-      <Route path="account/profile" element={<ProfilUser />} />
-      <Route path="cart" element={<Cart />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/shop/:id" element={<DetailProduct />} />
+      <Route path="/account" element={<AccountPage />} />
+      <Route path="/account/profile" element={<ProfilUser />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 };
