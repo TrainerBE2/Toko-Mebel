@@ -2,7 +2,7 @@ import "./Navbar.css";
 
 const FreeShipping = () => {
   return (
-    <header className="text-bg-dark py-2 w-100">
+    <header className="bg-white text-color py-2 w-100">
       <div className="container">
         <div className="row fm-2 align-items-center">
           <div className="col">

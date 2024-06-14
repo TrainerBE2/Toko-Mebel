@@ -2,6 +2,7 @@ import "../../styles/index.css";
 import { Form, Button, Card } from "react-bootstrap";
 import PropTypes from "prop-types"
 import { useState } from "react";
+import imgsignup from "../../assets/Image/signup-img.svg"
 
 export const RegisterForm = ({ toggleCard }) => {
   const [isPassword, setIsPassword] = useState(true);
@@ -14,8 +15,14 @@ export const RegisterForm = ({ toggleCard }) => {
     setIsConfirmPassword(!isConfirmPassword);
   };
   return (
-    <Card className="p-3 mx-auto text-bg-dark border-0 w-100">
-      <Card.Title className="fm-1 text-center fw-bold">
+    <Card className="bg-light p-3 mx-auto text-bg-dark border-0 w-100">
+      <Card.Img 
+        className="d-block mx-auto my-3"
+        style={{width: '300px'}}
+        src={imgsignup}
+      />
+      
+      <Card.Title className="fm-1 text-center fw-bold text-dark-dark">
         Create your account
       </Card.Title>
       <Card.Body>
@@ -23,26 +30,26 @@ export const RegisterForm = ({ toggleCard }) => {
           <Form.Group className="mb-3" controlId="completedName">
             <Form.Control
               type="text"
-              className="fm-2"
+              className="fm-2 "
               placeholder="Enter Complete Name"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="email">
             <Form.Control
               type="email"
-              className="fm-2"
+              className="fm-2 "
               placeholder="Enter email/no. telp"
             />
           </Form.Group>
           <Form.Group className="mb-3 d-flex" controlId="password">
             <Form.Control
               type={isPassword ? "password" : "text"}
-              className="fm-2 rounded-0 rounded-start"
+              className="fm-2 rounded-0 rounded-start border-end-0"
               placeholder="Password"
             />
             <Button
-              variant="warning"
-              className="rounded-0 rounded-end"
+              variant="light"
+              className="bg-white border border-start-0 rounded-0 rounded-end"
               onClick={handleEyePassword}
             >
               <i className={isPassword ? "ri-eye-off-line" : "ri-eye-line"}></i>
@@ -51,12 +58,12 @@ export const RegisterForm = ({ toggleCard }) => {
           <Form.Group className="mb-3 d-flex" controlId="confirmPassword">
             <Form.Control
               type={isConfirmPassword ? "password" : "text"}
-              className="fm-2 rounded-0 rounded-start"
+              className="fm-2 rounded-0 rounded-start border-end-0"
               placeholder="Confirm Password"
             />
             <Button
-              variant="warning"
-              className="rounded-0 rounded-end"
+              variant="light"
+              className="bg-white border border-start-0 rounded-0 rounded-end"
               onClick={handleEyeConfirmPassword}
             >
               <i
@@ -75,7 +82,7 @@ export const RegisterForm = ({ toggleCard }) => {
             className="fm-2 fs-7 text-center d-flex justify-content-center gap-1 align-items-center"
             controlId="toLogin"
           >
-            <p className="m-0">Have an account?</p>
+            <p className="m-0 text-keep">Have an account?</p>
             <Button
               variant="link"
               size="sm"

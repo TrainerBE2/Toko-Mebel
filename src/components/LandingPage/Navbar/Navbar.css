@@ -1,14 +1,36 @@
+
+
+/* LOGO */
+.text-color-logo1 {
+  color: #F5B800;
+}
+.text-color-logo2 {
+  color: white;
+}
+.text-color {
+  color: #063339;
+}
+/* humberger */
+.navbar-toggler-icon {
+  filter: brightness(100); 
+}
+
 nav{
   transition: all .3s;
 }
 nav .navbar-nav {
   gap: 15px;
+  
+}
+
+nav .nav-link.active {
+  color: white !important;
 }
 
 nav .nav-link {
   font-size: .75rem !important;
   font-weight: bold !important;
-  color: #000;
+  color: white;
   position: relative;
   padding: 0 !important;
   width: max-content;
@@ -24,9 +46,12 @@ nav .nav-link::before {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: orange;
+  background: #F5B800;
   z-index: 1;
   transition: all .3s;
+}
+nav .nav-link:hover {
+  color: white;
 }
 
 nav .nav-link:hover:before {
@@ -38,6 +63,7 @@ nav .nav-link.active::before {
 }
 
 nav .indicator__cart{
+  border: 2px solid #135961;
   position: absolute;
   width: 15px;
   height: 15px;
@@ -46,10 +72,11 @@ nav .indicator__cart{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: red;
-  color: white;
+  background: white;
+  color: #135961;
   top: -2px;
-  right: -2px;
+  right: -8px;
+  font-size: 10px;
 }
 
 header p, header i {
