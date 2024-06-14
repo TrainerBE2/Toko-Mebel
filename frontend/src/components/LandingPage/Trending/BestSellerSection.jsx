@@ -1,7 +1,7 @@
 import "./BestSeller.css"
 import "../../../styles/index.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
-import Products from "../../../assets/data/ProductList"
+import Products from "../../../assets/data/ProductList.jsx"
 import Categories from "../../../assets/data/Category.jsx"
 import { useState } from "react"
 import { Link } from "react-router-dom"

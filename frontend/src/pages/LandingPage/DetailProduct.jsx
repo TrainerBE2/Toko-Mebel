@@ -1,4 +1,4 @@
-import BannerHeader from "../../common/Banner/BannerHeader";
+import BannerHeader from "../../common/Banner/BannerHeader.jsx";
 import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Products from "../../assets/data/ProductList.jsx";
