@@ -8,16 +8,7 @@ const ProfilUser = () => {
     <section id="profile" className="bg-white overflow-hidden">
       <BannerHeader bannerTitle="Your Profile" />
       <Container className="pt-3 pb-5">
-        <Link to="/home" className="me-2">
-          <Button variant="primary" className="border mb-4">
-            <i className="ri-home-5-line"></i>
-          </Button>
-        </Link>
-        <Link to="/shop">
-          <Button variant="warning" className="border mb-4">
-            <i className="ri-store-2-line"></i>
-          </Button>
-        </Link>
+
         <Row lg="2">
           <Col lg="4">
             <Card className="fm-2 p-3">

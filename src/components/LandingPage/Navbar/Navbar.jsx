@@ -35,9 +35,8 @@ const NavbarPage = () => {
       <FreeShipping />
       <Navbar
         expand="lg"
-        className={`position-fixed z-3 border-0 w-100 bg-white border-bottom ${
-          isHidden ? "top-0" : "top-4"
-        }`}
+        sticky="top"
+        className="z-3 border-0 w-100 bg-dark-green shadow"
       >
         <Container>
           <HashLink
@@ -45,24 +44,24 @@ const NavbarPage = () => {
             to="/"
             className="navbar-brand fw-bold fs-4 m-0 p-0 fm-1"
           >
-            Toko<span className="text-warning">Mebel</span>
+            <span className="text-color-logo1">Toko</span><span className="text-color-logo2">Mebel</span>
           </HashLink>
           <div className="ms-auto me-3 d-flex d-lg-none gap-3 align-items-center justify-content-center">
-            <NavLink to="account" className="nav-link">
+            <NavLink to="/account" className="nav-link">
               <i className="ri-user-fill fs-6"></i>
             </NavLink>
-            <NavLink to="cart" className="nav-link position-relative">
-              <i className="ri-shopping-bag-fill fs-6"></i>
+            <NavLink to="/cart" className="nav-link position-relative">
+            <i className="ri-shopping-cart-2-fill fs-6 "></i> 
               <span className="indicator__cart">{totalItems}</span>
             </NavLink>
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="mt-4 mt-lg-0">
-            <Nav className="mx-auto text-center text-uppercase">
+            <Nav className="mx-auto w-50 text-center text-uppercase">
               <HashLink to="/home/#bestseller" className="nav-link">
                 Best Seller
               </HashLink>
-              <NavLink to="shop" className="nav-link">
+              <NavLink to="/shop" className="nav-link">
                 Shop
               </NavLink>
               <HashLink to="/home/#customize" className="nav-link">
@@ -73,16 +72,16 @@ const NavbarPage = () => {
               </HashLink>
             </Nav>
           </Navbar.Collapse>
-          <div className="d-none d-lg-flex gap-3 align-items-center justify-content-center">
-            <NavLink to="account" className="nav-link ms-auto">
+          <div className="d-none ms-lg-5 d-lg-flex gap-3 align-items-center justify-content-center">
+            <NavLink to="/account" className="nav-link ms-auto">
               <i className="ri-user-fill fs-6"></i>
             </NavLink>
-            <span>l</span>
+            <span className="text-white">l</span>
             <NavLink
-              to="cart"
+              to="/cart"
               className="nav-link me-auto position-relative"
             >
-              <i className="ri-shopping-bag-fill fs-6 me-1"></i>
+              <i className="ri-shopping-cart-2-fill fs-6 "></i>
               <span className="indicator__cart">{totalItems}</span>
             </NavLink>
           </div>

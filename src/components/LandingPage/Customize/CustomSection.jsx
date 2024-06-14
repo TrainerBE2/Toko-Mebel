@@ -32,9 +32,12 @@ const CustomSection = () => {
    };
   return (
     <>
-      <section id="customize" className="py-5 bg-white overflow-hidden">
-        <Container className="mt-5">
-          <Row className="gap-4 gap-md-5 gap-lg-0 align-items-end">
+     <div className="">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 259"><path fill="#135961" fill-opacity="1" d="M0,192L0,160L144,160L144,64L288,64L288,96L432,96L432,192L576,192L576,64L720,64L720,288L864,288L864,192L1008,192L1008,224L1152,224L1152,128L1296,128L1296,64L1440,64L1440,320L1296,320L1296,320L1152,320L1152,320L1008,320L1008,320L864,320L864,320L720,320L720,320L576,320L576,320L432,320L432,320L288,320L288,320L144,320L144,320L0,320L0,320Z"></path></svg>
+      </div>
+      <section id="customize" className="pt-3 pb-5 py-lg-5 bg-dark-green overflow-hidden">
+        <Container className="my-lg-5 py-lg-5 my-3">
+          <Row className="pt-5 gap-4 gap-md-5 gap-lg-0 align-items-end">
             <Col xs="12" md="12" lg="6">
               <Row className="g-4 align-items-end">
                 <Col
@@ -44,13 +47,13 @@ const CustomSection = () => {
                   data-aos="fade-down-right"
                 >
                   <div className="title">
-                    <p className="box fm-1 fw-bold fst-italic fs-7 py-1 px-2 border border-secondary max-content text-uppercase">
+                    <p className="text-orange box fm-1 fw-bold fst-italic fs-7 py-1 px-2 border border-secondary max-content text-uppercase">
                       Customize
                     </p>
-                    <h5 className="fw-bold text-uppercase m-0 fm-2">
+                    <h3 className="text-white fw-bold text-uppercase m-0 fm-2">
                       Design Material and Color
-                    </h5>
-                    <p className="m-0 fm-2 fw-medium">
+                    </h3>
+                    <p className="text-white m-0 fm-2 fw-medium">
                       Choose the color you want
                     </p>
                   </div>

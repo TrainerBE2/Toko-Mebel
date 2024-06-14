@@ -60,23 +60,14 @@ const DetailProduct = () => {
     <>
       <section id="detailProduct" className="bg-secondary-subtle">
         <BannerHeader bannerTitle="Detail Product" />
-        <Container className="pt-3 pb-5">
-          <Link to="/home" className="me-2">
-            <Button variant="primary" className="border mb-4">
-              <i className="ri-home-5-line"></i>
-            </Button>
-          </Link>
-          <Link to="/shop">
-            <Button variant="warning" className="border mb-4">
-              <i className="ri-store-2-line"></i>
-            </Button>
-          </Link>
+        <Container className="pt-5 pb-5">
+
           <div className="detail__items">
             <Row lg="2" className="g-3 gy-5">
               <Col lg="6" className="d-flex">
                 <div
-                  className="img__items mx-auto bg-light rounded-4 overflow-hidden"
-                  style={{ height: "350px" }}
+                  className="img__items mx-auto bg-light rounded-4 overflow-hidden "
+                  style={{ height: "350px", width: "100%" }}
                 >
                   <Image
                     src={image}

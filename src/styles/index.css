@@ -29,11 +29,43 @@
   font-size: .5rem !important;
 }
 
+
+
+
+
+.bg-dark-green {
+  background-color: #135961 !important;
+}
+.bg-dark-dark{
+  background-color: #073339;
+}
+
+.text-orange {
+  color: #F5B800;
+}
+.text-dark-green{
+  background-color: #135961 ;
+}
+.text-dark-dark {
+  color: #073339;
+}
+.text-paragraf {
+  color: #78CAD4;
+}
+.text-link{
+  color: #135961;
+}
+.text-keep {
+  color: #212529;
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #FAF6F3 !important;
+  background: #f8f9fa !important;
   min-height: 100vh !important;
 }
 

@@ -1,16 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import "../../styles/index.css";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Card} from "react-bootstrap";
 import Categories from "../../assets/data/Category.jsx";
 import Stylis from "../../assets/data/Style.jsx";
 import Sizes from "../../assets/data/Sizes.jsx";
 import Products from "../../assets/data/ProductList.jsx";
 import BannerHeader from "../../common/Banner/BannerHeader.jsx";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice.jsx";
 import { toast } from "react-toastify";
+
 
 const formatToIDR = (price) => {
   return new Intl.NumberFormat("id-ID", {
@@ -28,19 +29,19 @@ const ShopPage = () => {
 
   const dispatch = useDispatch();
 
-  const filterProducts = () => {
-    const keyword = searchKeyword.toLowerCase();
-    const filtered = Products.filter(
-      (product) =>
-        (selectedCategory ? product.category === selectedCategory : true) &&
-        (selectedStyle ? product.style === selectedStyle : true) &&
-        (selectedSize
-          ? getSizeFromSummary(product.summary) < selectedSize
-          : true) &&
-        (product.title.toLowerCase().includes(keyword) ||
-          product.summary.toLowerCase().includes(keyword))
-    );
-    setFilteredProducts(filtered);
+   const filterProducts = () => {
+     const keyword = searchKeyword.toLowerCase();
+     const filtered = Products.filter(
+       (product) =>
+         (selectedCategory ? product.category === selectedCategory : true) &&
+         (selectedStyle ? product.style === selectedStyle : true) &&
+         (selectedSize
+           ? getSizeFromSummary(product.summary) < selectedSize
+           : true) &&
+         (product.title.toLowerCase().includes(keyword) ||
+           product.summary.toLowerCase().includes(keyword))
+     );
+     setFilteredProducts(filtered);
   };
   const handleSearch = (e) => {
     setSearchKeyword(e.target.value);
@@ -54,7 +55,7 @@ const ShopPage = () => {
     setSelectedCategory(category);
     setSearchKeyword("");
     setSelectedStyle("");
-    setSelectedSize(null);
+    setSelectedSize(null); 
   };
 
   const handleStyle = (style) => {
@@ -74,7 +75,7 @@ const ShopPage = () => {
     setSelectedStyle("");
     setSelectedSize(null);
     setSearchKeyword("");
-  };
+  }
 
   const handleAddToCart = (product) => {
     dispatch(
@@ -83,22 +84,22 @@ const ShopPage = () => {
         quantity: 1,
         totalPrice: product.price,
       })
-    );
+    )
     toast.success("Product has been added to cart");
   };
 
   return (
     <>
-      <section id="shop" className="bg-secondary-subtle pb-4 overflow-hidden">
+      <section id="shop" className="bg-light pb-4 overflow-hidden">
         <BannerHeader bannerTitle="SHOP" />
         <Container className="my-4">
-          <Row md="2" className="g-0 g-md-3 g-lg-5">
+          <Row md="2" className="g-0 g-md-3 g-lg-5 ">
             <Col
               md="3"
-              className="bg-light p-3 rounded h-max-content"
+              className="bg-light p-3 rounded h-max-content "
               data-aos="fade-right"
             >
-              <div className="category__product">
+              <div className="category__product ">
                 <h1 className="fw-semibold fs-5 fm-4 mb-1">Categories:</h1>
                 <Row className="g-1 g-lg-2">
                   {Categories.map((category, index) => (
@@ -120,8 +121,8 @@ const ShopPage = () => {
                   ))}
                 </Row>
               </div>
-              <div className="design__product mt-3">
-                <h1 className="fw-semibold fs-5 fm-4 mb-1">Style:</h1>
+              <div className=" design__product mt-3">
+                <h1 className=" fw-semibold fs-5 fm-4 mb-1">Style:</h1>
                 <Row className="g-1 g-lg-2">
                   {Stylis.map((style, index) => (
                     <Col key={index}>
@@ -163,33 +164,33 @@ const ShopPage = () => {
                 </Row>
               </div>
             </Col>
-            <Col md="9">
+            <Col  md="9">
               <div
                 className="search__product mt-2 mt-md-0 d-flex gap-2"
                 data-aos="fade-left"
                 data-aos-delay="200"
               >
-                <Link to="/home">
+                {/* <Link to="/home">
                   <Button variant="primary" className="border">
                     <i className="ri-home-5-line"></i>
                   </Button>
-                </Link>
+                </Link> */}
                 <div className="input-group fm-2">
                   <input
                     type="text"
-                    className="form-control fs-6 border border-end-0 border-secondary-subtle"
+                    className="form-control fs-6 border-2 border-end-0 border-secondary-subtle"
                     placeholder="Cari Furniture"
                     value={searchKeyword}
                     onChange={handleSearch}
                   />
-                  <span className="border border-start-0 border-secondary-subtle rounded-right input-group-text fw-semibold">
+                  <span className="border-2 border-start-0 border-secondary-subtle rounded-right input-group-text fw-semibold">
                     <i className="ri-search-line"></i>
                   </span>
                 </div>
                 <Button
-                  variant="danger"
+                  variant="light"
                   size="md"
-                  className="btn__clear fm-2 fw-medium border"
+                  className="btn__clear fm-2 fw-medium border-secondary-subtle border-2"
                   onClick={() => handleClear()}
                 >
                   <i className="ri-filter-off-line"></i>
@@ -209,16 +210,18 @@ const ShopPage = () => {
                       <Col key={product.id} data-aos="zoom-in">
                         <div className="card__container">
                           <Card className="h-100 w-100 rounded-0 bg-light fm-2 overflow-hidden border-2">
+                            <div className="">
                             <Card.Img
                               variant="top"
                               src={product.image}
                               alt={product.title}
                               className={`d-block w-100 rounded-0 ${
                                 product.category === "Bed"
-                                  ? "object-fit-cover"
-                                  : "object-fit-contain"
-                              }`}
-                            />
+                                ? "object-fit-cover"
+                                : "object-fit-contain"
+                                }`}
+                                />
+                              </div>
                             <Card.Footer className="d-flex align-items-center justify-content-between p-0 bg-light position-relative z-1 w-100 border-2 rounded-0">
                               <p className="mb-0 ms-3 ms-md-2 fs-7">
                                 {formatToIDR(product.price)}

@@ -1,7 +1,7 @@
 
-import HeroImg1 from "../../../assets/Image/Shofa/single-sofa-03.png";
-import HeroImg2 from "../../../assets/Image/Chair/arm-chair-06.png";
-import {Row, Col} from "react-bootstrap"
+import HeroImg1 from "../../../assets/Image/left-chair-img.png";
+import HeroImg2 from "../../../assets/Image/right-chair-img.png";
+import {Row, Col, Container} from "react-bootstrap"
 import "./Hero.css";
 import { NavLink } from "react-router-dom"
 import "../../../styles/index.css";
@@ -11,31 +11,32 @@ const HeroSection = () => {
     <>
       <section
         id="home"
-        className="py-md-5 d-flex align-items-center justify-content-center overflow-hidden bg-white"
+        className="bg-dark-green py-md-5 d-flex align-items-center justify-content-center overflow-hidden"
       >
+        <Container>
+
+
         <div className="mt-5 mt-lg-0">
           <Row className="g-md-4 g-3">
             <Col xs="6" lg="4"
-              className="pe-md-5 align-content-start"
+              className="align-content-start"
               data-aos="fade-down-right"
               data-aos-delay="300"
             >
-              <div className="img-container me-auto d-flex justify-content-center align-items-center">
-                <div className="img mx-auto">
-                  <img src={HeroImg1} alt="Shofa Red" />
-                </div>
+              <div className="img-container d-flex justify-content-start align-items-start me-auto">
+                  <img className="w-100 h-100 d-block " src={HeroImg1} alt="Shofa Red" />
               </div>
             </Col>
             <Col xs="12" lg="4"
-              className="order-first order-lg-0 mx-auto"
+              className="order-first order-lg-0 mb-5 mx-auto"
               data-aos="zoom-in-down"
             >
-              <div className="text-center hero__cta mb-5 mb-lg-0 px-md-5 px-lg-0">
-                <h1 className="m-0 fw-bold fm-4">
+              <div className="text-white text-center hero__cta my-5 mb-lg-0 px-md-5 px-lg-0">
+                <h1 className=" m-0 fw-bold fm-4">
                   MAKE SURE YOUR <br /> HOME SHAPES YOUR <br /> PERSONALITY
                 </h1>
                 <span className="mx-auto mt-2 mb-3 rounded-3 d-block"></span>
-                <p className="mb-4 fm-2">
+                <p className="text-paragraf mb-4 fm-2">
                   Incredible home decor tips for your nest`s design!{" "}
                   <b>Get inspired</b> & make the design of your <b>Dreams!</b>
                 </p>
@@ -47,18 +48,17 @@ const HeroSection = () => {
               </div>
             </Col>
             <Col xs="6" lg="4"
-              className="ps-md-5 align-content-end"
+              className="align-content-end "
               data-aos="fade-up-left"
               data-aos-delay="300"
             >
-              <div className="img-container ms-auto d-flex justify-content-center align-items-start">
-                <div className="img mx-auto">
-                  <img src={HeroImg2} alt="Chair" />
-                </div>
+              <div className="img-container d-flex justify-content-end align-items-end ms-auto">
+                  <img  src={HeroImg2}  alt="Chair" className=" w-100 h-100 d-block"/>
               </div>
             </Col>
           </Row>
         </div>
+        </Container>
       </section>
     </>
   );
