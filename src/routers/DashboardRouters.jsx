@@ -12,6 +12,7 @@ import Orders from "../pages/DashboardPage/Orders.jsx";
 const DashboardRouters = () => {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="dashboard" />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/users" element={<Users />} />
 
