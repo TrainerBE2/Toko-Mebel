@@ -115,7 +115,7 @@ const CustomSection = () => {
                         size="md"
                         className="rounded-0 px-md-4 px-3 fw-bold"
                       >
-                        <i className="ri-shopping-cart-2-line fs-6"></i>
+                        <i className="ri-settings-5-fill fs-6"></i>
                       </Button>
                     </Card.Footer>
                   </Card>
