@@ -49,11 +49,10 @@ const BestSellerSection = () => {
               Best Seller
             </p>
             <h3 className="fm-2 fs-4 fw-bold text-dark-dark">Home Decor</h3>
-            {/* <span className="d-block bg-warning"></span> */}
           </div>
 
           <div className="p-2 "> 
-            {/*border border-secondary-subtle bg-secondary-subtle  */}
+           
           <div className="category__btn ">
             <Row className="g-2">
               {Categories.map((category, index) => (
