@@ -1,7 +1,7 @@
 
 import HeroImg1 from "../../../assets/Image/left-chair-img.png";
 import HeroImg2 from "../../../assets/Image/right-chair-img.png";
-import {Row, Col, Container} from "react-bootstrap"
+import {Row, Col} from "react-bootstrap"
 import "./Hero.css";
 import { NavLink } from "react-router-dom"
 import "../../../styles/index.css";
@@ -11,15 +11,13 @@ const HeroSection = () => {
     <>
       <section
         id="home"
-        className="bg-dark-green py-md-5 d-flex align-items-center justify-content-center overflow-hidden"
+        className="bg-dark-green py-md-5 d-flex align-items-center justify-content-center overflow-hidden px-lg-3 px-md-5"
       >
-        <Container>
 
-
-        <div className="mt-5 mt-lg-0">
-          <Row className="g-md-4 g-3">
+        <div className="mt-5 mt-md-0">
+          <Row className="g-md-1 g-lg-0">
             <Col xs="6" lg="4"
-              className="align-content-start"
+              className="align-content-center"
               data-aos="fade-down-right"
               data-aos-delay="300"
             >
@@ -31,7 +29,7 @@ const HeroSection = () => {
               className="order-first order-lg-0 mb-5 mx-auto"
               data-aos="zoom-in-down"
             >
-              <div className="text-white text-center hero__cta my-5 mb-lg-0 px-md-5 px-lg-0">
+              <div className="text-white text-center hero__cta my-5 mb-lg-0 px-3 px-md-5 px-lg-0">
                 <h1 className=" m-0 fw-bold fm-4">
                   MAKE SURE YOUR <br /> HOME SHAPES YOUR <br /> PERSONALITY
                 </h1>
@@ -48,7 +46,7 @@ const HeroSection = () => {
               </div>
             </Col>
             <Col xs="6" lg="4"
-              className="align-content-end "
+              className="align-content-center"
               data-aos="fade-up-left"
               data-aos-delay="300"
             >
@@ -58,7 +56,6 @@ const HeroSection = () => {
             </Col>
           </Row>
         </div>
-        </Container>
       </section>
     </>
   );
