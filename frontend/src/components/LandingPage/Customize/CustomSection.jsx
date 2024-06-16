@@ -33,7 +33,7 @@ const CustomSection = () => {
   return (
     <>
      <div className="">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 259"><path fill="#135961" fill-opacity="1" d="M0,192L0,160L144,160L144,64L288,64L288,96L432,96L432,192L576,192L576,64L720,64L720,288L864,288L864,192L1008,192L1008,224L1152,224L1152,128L1296,128L1296,64L1440,64L1440,320L1296,320L1296,320L1152,320L1152,320L1008,320L1008,320L864,320L864,320L720,320L720,320L576,320L576,320L432,320L432,320L288,320L288,320L144,320L144,320L0,320L0,320Z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 259"><path fill="#135961" fillOpacity="1" d="M0,192L0,160L144,160L144,64L288,64L288,96L432,96L432,192L576,192L576,64L720,64L720,288L864,288L864,192L1008,192L1008,224L1152,224L1152,128L1296,128L1296,64L1440,64L1440,320L1296,320L1296,320L1152,320L1152,320L1008,320L1008,320L864,320L864,320L720,320L720,320L576,320L576,320L432,320L432,320L288,320L288,320L144,320L144,320L0,320L0,320Z"></path></svg>
       </div>
       <section id="customize" className="pt-3 pb-5 py-lg-5 bg-dark-green overflow-hidden">
         <Container className="my-lg-5 py-lg-5 my-3">
@@ -115,7 +115,7 @@ const CustomSection = () => {
                         size="md"
                         className="rounded-0 px-md-4 px-3 fw-bold"
                       >
-                        <i className="ri-shopping-cart-2-line fs-6"></i>
+                        <i className="ri-settings-5-fill fs-6"></i>
                       </Button>
                     </Card.Footer>
                   </Card>
