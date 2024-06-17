@@ -1,4 +1,3 @@
-
 .grid-container {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -19,6 +18,7 @@
 /* Sidebar */
 #sidebar {
   grid-area: sidebar;
+  font-family: "Poppins", sans-serif;
 }
 
 .sidebar-brand {
@@ -42,6 +42,7 @@
   position: absolute;
   z-index: 12 !important;
 }
+
 
 /* End Sidebar */
 

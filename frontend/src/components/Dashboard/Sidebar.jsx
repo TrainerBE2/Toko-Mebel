@@ -1,10 +1,10 @@
 import "../../styles/Dashboard.css";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const BarMenu = [
   {
     title: "Dashboard",
-    path: "/admin/dashboard",
+    path: "/admin",
     icon: "ri-dashboard-2-line",
   },
   {
@@ -56,12 +56,12 @@ const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
       <ul className="list-unstyled">
         {BarMenu.map((menu, index) => (
           <li className="sidebar-item p-3" key={index}>
-            <Link
+            <NavLink
               to={menu.path}
               className=" text-decoration-none text-light p-3 w-100"
             >
               <i className={`${menu.icon} me-2`}></i> {menu.title}
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>
