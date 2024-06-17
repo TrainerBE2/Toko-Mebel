@@ -44,7 +44,7 @@ const FormCustomers = () => {
   };
   return (
     <Container>
-      <Card className="text-bg-dark border border-secondary">
+      <Card className="text-bg-dark border border-secondary fm-2">
         <Card.Header className="border-bottom border-secondary">
           {isEditing ? "Edit Customer" : "Add Customer"}
         </Card.Header>

@@ -8,12 +8,12 @@ const Orders = () => {
   const navigate = useNavigate();
 
   const fetchOrders = async () => {
-    const response = await axios.get("http://localhost:5000/api/orders");
+    const response = await axios.get("http://localhost:5000/api/v1/order");
     setOrders(response.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/orders/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/order/${id}`);
     fetchOrders();
   };
 
@@ -21,7 +21,7 @@ const Orders = () => {
     fetchOrders();
   }, []);
   return (
-    <Container>
+    <Container className="fm-2">
       <div className="title mb-3">
         <Row xs="2" md="2" className="g-2 align-items-center w-100">
           <Col lg="8">

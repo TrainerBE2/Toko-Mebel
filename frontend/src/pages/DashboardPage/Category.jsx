@@ -48,7 +48,7 @@ const Category = () => {
 
   return (
     <Container>
-      <div className="table-responsive overflow-x-auto">
+      <div className="table-responsive overflow-x-auto fm-2">
         <div className="card text-bg-dark border border-secondary">
           <div className="card-header d-flex flex-column flex-md-row justify-content-between align-items-center p-3">
             <Row xs="2" md="3" className="g-2 align-items-center w-100">

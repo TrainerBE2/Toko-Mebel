@@ -9,12 +9,12 @@ const Dashboard = () => {
 
   const fetchCount = async () => {
     try {
-      const resProduct = await axios.get("http://localhost:5000/api/products");
-      const resCategory = await axios.get("http://localhost:5000/api/category");
+      const resProduct = await axios.get("http://localhost:5000/api/v1/product");
+      const resCategory = await axios.get("http://localhost:5000/api/v1/category");
       const resCustomer = await axios.get(
-        "http://localhost:5000/api/customers"
+        "http://localhost:5000/api/v1/customer"
       );
-      const resOrder = await axios.get("http://localhost:5000/api/orders");
+      const resOrder = await axios.get("http://localhost:5000/api/v1/order");
       setProductLength(resProduct.data.length);
       setCategoryLength(resCategory.data.length);
       setCustomerLength(resCustomer.data.length);
@@ -28,7 +28,7 @@ const Dashboard = () => {
     fetchCount();
   }, []);
   return (
-    <div className="container">
+    <div className="container fm-2">
       <div className="main-title d-flex justify-content-between mb-3">
         <h3>Dashboard</h3>
       </div>
