@@ -37,7 +37,13 @@ const NavbarPage = () => {
             </NavLink>
             <NavLink to="/cart" className="nav-link position-relative">
               <i className="ri-shopping-cart-2-fill fs-6 "></i>
-              <span className="indicator__cart">{totalItems}</span>
+              <span
+                className={`indicator__cart ${
+                  totalItems === 0 ? "d-none" : "d-flex"
+                }`}
+              >
+                {totalItems}
+              </span>
             </NavLink>
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -64,7 +70,13 @@ const NavbarPage = () => {
             <span className="text-white">l</span>
             <NavLink to="/cart" className="nav-link me-auto position-relative">
               <i className="ri-shopping-cart-2-fill fs-6 "></i>
-              <span className="indicator__cart">{totalItems}</span>
+              <span
+                className={`indicator__cart ${
+                  totalItems === 0 ? "d-none" : "d-flex"
+                }`}
+              >
+                {totalItems}
+              </span>
             </NavLink>
           </div>
         </Container>
