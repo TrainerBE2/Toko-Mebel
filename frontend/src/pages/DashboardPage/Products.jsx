@@ -93,7 +93,6 @@ const Products = () => {
                     <td className="d-flex gap-2 justify-content-center">
                       <Button
                         variant="info"
-                        // onClick={() => handleShow(product)}
                       >
                         Detail
                       </Button>

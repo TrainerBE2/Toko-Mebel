@@ -28,23 +28,23 @@ const Users = () => {
   };
 
   const fetchUsers = async () => {
-    const response = await axios.get("http://localhost:5000/api/users");
+    const response = await axios.get("http://localhost:5000/api/v1/users");
     setUsers(response.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/users/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/users/${id}`);
     fetchUsers();
   };
 
   const handleSave = async () => {
     if (currentUser.id) {
       await axios.put(
-        `http://localhost:5000/api/users/${currentUser.id}`,
+        `http://localhost:5000/api/v1/users/${currentUser.id}`,
         currentUser
       );
     } else {
-      await axios.post("http://localhost:5000/api/users", currentUser);
+      await axios.post("http://localhost:5000/api/v1/users", currentUser);
     }
     fetchUsers();
     handleClose();

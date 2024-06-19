@@ -68,16 +68,16 @@ const Cart = () => {
 
   useEffect(() => {
     const validateForm = () => {
-      if (email && name && city && address) {
+      if (email && name && city && address && cartItems.length > 0) {
         setIsFormValid(true);
       } else {
         setIsFormValid(false);
       }
     };
     validateForm();
-  }, [email, name, city, address]);
+  }, [email, name, city, address, cartItems]);
   const handlePayment = async () => {
-    alert("your payment has been processed");
+    toast.success("Your order has been received");
   };
 
   return (

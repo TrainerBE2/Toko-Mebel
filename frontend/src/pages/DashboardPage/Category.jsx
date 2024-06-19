@@ -24,25 +24,25 @@ const Category = () => {
     setShow(true);
   };
   const fetchCategories = async () => {
-    const response = await axios.get("http://localhost:5000/api/categories");
+    const response = await axios.get("http://localhost:5000/api/v1/category");
     setCategories(response.data);
   };
 
   const handleSave = async () => {
     if (currentCategory.id) {
       await axios.put(
-        `http://localhost:5000/api/categories/${currentCategory.id}`,
+        `http://localhost:5000/api/v1/category/${currentCategory.id}`,
         currentCategory
       );
     } else {
-      await axios.post("http://localhost:5000/api/categories", currentCategory);
+      await axios.post("http://localhost:5000/api/v1/category", currentCategory);
     }
     fetchCategories();
     handleClose();
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/categories/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/category/${id}`);
     fetchCategories();
   };
 

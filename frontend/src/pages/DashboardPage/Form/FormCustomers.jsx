@@ -34,13 +34,13 @@ const FormCustomers = () => {
     e.preventDefault();
     if (isEditing) {
       await axios.put(
-        `http://localhost:5000/api/customers/${customer.id}`,
+        `http://localhost:5000/api/v1/customers/${customer.id}`,
         customer
       );
     } else {
-      await axios.post("http://localhost:5000/api/customers", customer);
+      await axios.post("http://localhost:5000/api/v1/customers", customer);
     }
-    navigate("customers");
+    navigate("admin/customers");
   };
   return (
     <Container>

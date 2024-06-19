@@ -8,12 +8,12 @@ const Customers = () => {
   const navigate = useNavigate();
 
   const fetchCustomers = async () => {
-    const response = await axios.get("http://localhost:5000/api/customers");
+    const response = await axios.get("http://localhost:5000/api/v1/customers");
     setCustomers(response.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/customers/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/customers/${id}`);
     fetchCustomers();
   };
 

@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="row mt-4">
           <div className="col-lg-4 col-md-12 mb-4 mb-md-0">
             <h5 className="text-uppercase mb-4 fm-3 fw-bold">About Toko<span className="text-orange">Mebel</span> </h5>
-            <p className="fm-2 fs-7">
+            <p className="fm-2 fs-7 mb-2">
             We are a TokoMebel committed to bringing comfort and beauty to every home with high-quality products and elegant designs. Bringing comfort and style to your home with premium furniture.
             </p>
             <p className="fm-2 fs-7">
@@ -81,7 +81,7 @@ const Footer = () => {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        <p className="m-0 fm-3 fs-7">&copy; 2024 - Kelompok 2. All Right Reserved</p>
+        <p className="m-0 fm-3 fs-7">&copy; 2024 - Toko Mebel. All Right Reserved</p>
       </div>
       
     </footer>
