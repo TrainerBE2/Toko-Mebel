@@ -33,7 +33,7 @@ const ButtonTop = () => {
         <Button
           variant="danger"
           size="sm"
-          className="position-fixed d-none bottom-0 end-0 m-4"
+          className="position-fixed bottom-0 end-0 m-4"
           onClick={scrollToTop}
         >
           <i className="ri-arrow-up-s-line"></i>
