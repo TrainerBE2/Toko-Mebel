@@ -251,7 +251,7 @@ const Cart = () => {
                       onChange={(e) => setCity(e.target.value)}
                     />
                     <Form.Control
-                      type="text"
+                      as="textarea"
                       className="fs-7 rounded-top-0"
                       placeholder="Address"
                       value={address}
