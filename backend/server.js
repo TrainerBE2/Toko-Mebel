@@ -10,8 +10,8 @@ const port = process.env.PORT
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // allow requests from this origin
-    credentials: true, // allow credentials
+    origin: "http://localhost:3000",
+    credentials: true,
   })
 );
 

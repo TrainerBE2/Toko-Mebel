@@ -5,10 +5,8 @@
   "description": "Dashboard Toko Mebel",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "client": "npm run dev --prefix frontend",
-    "app": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "Toko Mebel",
