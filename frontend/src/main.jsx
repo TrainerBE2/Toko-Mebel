@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/index.css";
+import ButtonTop from "./common/ButtonTop/ButtonTop.jsx";
 
 AOS.init();
 AOS.init({
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
+      <ButtonTop />
     </BrowserRouter>
   </React.StrictMode>
 );
