@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import "../../styles/index.css";
 import { Container, Row, Col, Button, Card} from "react-bootstrap";

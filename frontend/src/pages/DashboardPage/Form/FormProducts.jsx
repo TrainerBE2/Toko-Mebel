@@ -33,18 +33,18 @@ const FormProducts = () => {
     e.preventDefault();
     if (isEditing) {
       await axios.put(
-        `http://localhost:5000/api/products/${product.id}`,
+        `http://localhost:5000/api/v1/product/${product.id}`,
         product
       );
     } else {
-      await axios.post("http://localhost:5000/api/products", product);
+      await axios.post("http://localhost:5000/api/v1/product", product);
     }
-    navigate("products");
+    navigate("admin/products");
   };
 
   return (
     <Container>
-      <Card className="text-bg-dark border border-secondary">
+      <Card className="text-bg-dark border border-secondary fm-2">
         <Card.Header className="border-bottom border-secondary">
           {isEditing ? "Edit Product" : "Add Product"}
         </Card.Header>

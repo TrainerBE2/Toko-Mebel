@@ -74,6 +74,9 @@ export const RegisterForm = ({ toggleCard }) => {
             </Button>
           </Form.Group>
           <Form.Group className="mb-4 fm-3 text-center">
+            <Form.Control type="file" />
+          </Form.Group>
+          <Form.Group className="mb-4 fm-3 text-center">
             <Button variant="success" className="px-5 fw-semibold w-100">
               Register
             </Button>

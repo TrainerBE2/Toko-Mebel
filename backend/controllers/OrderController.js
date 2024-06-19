@@ -5,7 +5,7 @@ import Order from "../models/orderModel.js";
 export const CreateOrder = asyncHandler(async (req, res) => {
   const { firstname, lastname, phone, email, address, city, cartItem } =
     req.body;
-  if (!cartItem || cartItem.length < 0) {
+  if (!cartItem || cartItem.length < 1) {
     res.status(400);
     throw new Error("Keranjang anda masih kosong");
   }
@@ -52,9 +52,22 @@ export const CreateOrder = asyncHandler(async (req, res) => {
   });
 });
 
-export const AllOrder = asyncHandler(async (req, res) => {});
+export const AllOrder = asyncHandler(async (req, res) => {
+  const order = await Order.find()
 
-export const DetailOrder = asyncHandler(async (req, res) => {});
+  return res.status(200).json({
+    data: order,
+    message: "Berhasil tampil semua order",
+  })
+});
+
+export const DetailOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+  return res.status(200).json({
+    data: order,
+    message: "Berhasil tampil detail order",
+  })
+});
 
 export const UpdateOrder = asyncHandler(async (req, res) => {
   const paramId = req.params.id;
@@ -79,4 +92,13 @@ export const DeleteOrder = asyncHandler(async (req, res) => {
   });
 });
 
-export const CurrentUserOrder = asyncHandler(async (req, res) => {});
+export const CurrentUserOrder = asyncHandler(async (req, res) => {
+  const order = await Order.find({
+  'user': req.user.id
+  })
+  
+  return res.status(200).json({
+    data: order,
+    message: "Berhasil tampil current user order",
+  })
+});

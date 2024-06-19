@@ -1,4 +1,4 @@
-import {Routes, Route, Navigate} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 import Dashboard from "../pages/DashboardPage/Dashboard.jsx";
 import Users from "../pages/DashboardPage/Users.jsx";
 import Products from "../pages/DashboardPage/Products.jsx";
@@ -7,13 +7,13 @@ import Category from "../pages/DashboardPage/Category.jsx";
 import Customers from "../pages/DashboardPage/Customers.jsx";
 import FormCustomers from "../pages/DashboardPage/Form/FormCustomers.jsx";
 import Orders from "../pages/DashboardPage/Orders.jsx";
+import NotPage from "../pages/DashboardPage/NotPage.jsx";
 
 
 const DashboardRouters = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="dashboard" />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/" element={<Dashboard />} />
       <Route path="/users" element={<Users />} />
 
       <Route path="/products" element={<Products />} />
@@ -27,6 +27,7 @@ const DashboardRouters = () => {
       <Route path="/customers/edit/:id" element={<FormCustomers />} />
 
       <Route path="/orders" element={<Orders />} />
+      <Route path="*" element={<NotPage />} />
     </Routes>
   );
 }

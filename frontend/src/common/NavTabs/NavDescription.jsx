@@ -1,8 +1,8 @@
-import { Nav, Card } from "react-bootstrap"
-import { useState } from "react"
-import PropTypes from "prop-types"
+import { Nav, Card, Form, Button } from "react-bootstrap";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-const NavDescription = ({description}) => {
+const NavDescription = ({ description }) => {
   const [activeTab, setActiveTab] = useState("description");
   return (
     <>
@@ -40,7 +40,7 @@ const NavDescription = ({description}) => {
           }`}
         >
           <Card.Body>
-            <Card.Text className="fm-2">{ description }</Card.Text>
+            <Card.Text className="fm-2">{description}</Card.Text>
           </Card.Body>
         </Card>
       )}
@@ -51,16 +51,43 @@ const NavDescription = ({description}) => {
           }`}
         >
           <Card.Body>
-            <Card.Text className="fm-2">No reviews yet. Be the first to review!</Card.Text>
+            <Card.Text className="fm-2">
+              No reviews yet. Be the first to review!
+            </Card.Text>
+            <hr />
+            <Form className="w-50">
+              <Form.Group className="mb-2">
+                <Form.Label className="fw-semibold">Your Name</Form.Label>
+                <Form.Control type="text" />
+              </Form.Group>
+              <Form.Group className="mb-2">
+                <Form.Label className="fw-semibold">Your Comments</Form.Label>
+                <Form.Control as="textarea" />
+              </Form.Group>
+              <Form.Group className="mb-2">
+                <i className="ri-star-line"></i>
+                <i className="ri-star-line"></i>
+                <i className="ri-star-line"></i>
+                <i className="ri-star-line"></i>
+                <i className="ri-star-line"></i>
+              </Form.Group>
+            
+              <Form.Group className="mb-3">
+                <Form.Control type="file" size="sm" />
+              </Form.Group>
+              <Form.Group className="mb-2">
+                <Button variant="success">Send</Button>
+              </Form.Group>
+            </Form>
           </Card.Body>
         </Card>
       )}
     </>
   );
-}
+};
 
 NavDescription.propTypes = {
   description: PropTypes.string.isRequired,
-}
+};
 
-export default NavDescription
+export default NavDescription;

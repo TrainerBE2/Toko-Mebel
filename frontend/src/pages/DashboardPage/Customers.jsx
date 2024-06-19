@@ -8,12 +8,12 @@ const Customers = () => {
   const navigate = useNavigate();
 
   const fetchCustomers = async () => {
-    const response = await axios.get("http://localhost:5000/api/customers");
+    const response = await axios.get("http://localhost:5000/api/v1/customers");
     setCustomers(response.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/customers/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/customers/${id}`);
     fetchCustomers();
   };
 
@@ -22,7 +22,7 @@ const Customers = () => {
   }, []);
   return (
     <Container>
-      <div className="table-responsive overflow-x-auto">
+      <div className="table-responsive overflow-x-auto fm-2">
         <div className="card text-bg-dark border border-secondary">
           <div className="card-header d-flex flex-column flex-md-row justify-content-between align-items-center p-3">
             <Row xs="2" md="3" className="g-2 align-items-center w-100">

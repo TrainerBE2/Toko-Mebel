@@ -1,11 +1,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from "cors";
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 import cookieParser from 'cookie-parser';
 dotenv.config()
 const app = express();
 const port = process.env.PORT
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // allow requests from this origin
+    credentials: true, // allow credentials
+  })
+);
+
 // Middlewares
 app.use(express.json())
 app.use(cookieParser())

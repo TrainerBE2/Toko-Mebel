@@ -8,12 +8,12 @@ const Products = () => {
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
-    const response = await axios.get("http://localhost:5000/api/products");
+    const response = await axios.get("http://localhost:5000/api/v1/product");
     setProducts(response.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/products/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/product/${id}`);
     fetchProducts();
   };
 
@@ -22,7 +22,7 @@ const Products = () => {
   }, []);
   return (
     <Container>
-      <div className="table-responsive overflow-x-auto">
+      <div className="table-responsive overflow-x-auto fm-2">
         <div className="card text-bg-dark border border-secondary">
           <div className="card-header d-flex flex-column flex-md-row justify-content-between align-items-center p-3">
             <Row xs="2" md="3" className="g-2 align-items-center w-100">
@@ -93,7 +93,6 @@ const Products = () => {
                     <td className="d-flex gap-2 justify-content-center">
                       <Button
                         variant="info"
-                        // onClick={() => handleShow(product)}
                       >
                         Detail
                       </Button>
