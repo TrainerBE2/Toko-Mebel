@@ -2,7 +2,6 @@ import express from "express";
 import { protectedMiddleware, ownerMiddleware } from "../middlewares/authMiddleware.js";
 import { CreateOrder, AllOrder, DetailOrder, CurrentUserOrder, UpdateOrder, DeleteOrder } from "../controllers/OrderController.js";
 
-
 const router = express.Router();
 
 // post /api/v1/order
@@ -23,7 +22,7 @@ router.put("/:id", protectedMiddleware, ownerMiddleware, UpdateOrder)
 
 // delete /api/v1/order/:id
 // cuman diakses oleh owner
-router.delete("/:id", protectedMiddleware, ownerMiddleware, UpdateOrder)
+router.delete("/:id", protectedMiddleware, ownerMiddleware, DeleteOrder)
 
 // get /api/v1/order/current/user
 // cuman bisa dikases user auth

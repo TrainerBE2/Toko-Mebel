@@ -1,12 +1,13 @@
 
 import HeroImg1 from "../../../assets/Image/left-chair-img.png";
 import HeroImg2 from "../../../assets/Image/right-chair-img.png";
-import {Row, Col} from "react-bootstrap"
+import {Row, Col, Button} from "react-bootstrap"
 import "./Hero.css";
-import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "../../../styles/index.css";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section
@@ -38,11 +39,12 @@ const HeroSection = () => {
                   Incredible home decor tips for your nest`s design!{" "}
                   <b>Get inspired</b> & make the design of your <b>Dreams!</b>
                 </p>
-                <NavLink to="/shop"
-                  className="nav-link max-content mx-auto text-bg-dark py-2 px-3 rounded-0 fm-2"
+                <Button variant="dark" size="md"
+                  className="mx-auto rounded-0 py-2 px-3 fm-2 fs-6"
+                  onClick={() => navigate("/shop")}
                 >
                   SHOP NOW <i className="ri-arrow-right-circle-line ms-1"></i>
-                </NavLink>
+                </Button>
               </div>
             </Col>
             <Col xs="6" lg="4"

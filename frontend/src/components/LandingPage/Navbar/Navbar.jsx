@@ -6,8 +6,24 @@ import "./Navbar.css";
 import { HashLink } from "react-router-hash-link";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
 const NavbarPage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const getUser = () => {
+      const token = localStorage.getItem("user");
+      if (!token) {
+        setIsLoggedIn(false);
+      } else {
+        setIsLoggedIn(true);
+      }
+    };
+
+    getUser()
+  }, []);
+
   const cartItems = useSelector((state) => state.cart.data || []);
 
   const totalItems = cartItems
@@ -64,9 +80,15 @@ const NavbarPage = () => {
             </Nav>
           </Navbar.Collapse>
           <div className="d-none ms-lg-5 d-lg-flex gap-3 align-items-center justify-content-center">
-            <NavLink to="/account" className="nav-link ms-auto">
-              <i className="ri-user-fill fs-6"></i>
-            </NavLink>
+            {isLoggedIn ? (
+              <NavLink to="/account/profile" className="nav-link">
+                <i className="ri-user-fill fs-6"></i>
+              </NavLink>
+            ) : (
+              <NavLink to="/account/login" className="nav-link">
+                <i className="ri-user-fill fs-6"></i>
+              </NavLink>
+            )}
             <span className="text-white">l</span>
             <NavLink to="/cart" className="nav-link me-auto position-relative">
               <i className="ri-shopping-cart-2-fill fs-6 "></i>

@@ -1,20 +1,21 @@
 import express from "express";
-import { registerUser, loginUser, getCurrentUser, logoutUser } from "../controllers/authController.js";
-import { protectedMiddleware, ownerMiddleware } from "../middlewares/authMiddleware.js";
+import { registerUser, loginUser, getCurrentUser, logoutUser, AllUser, deleteUser, updateUser } from "../controllers/authController.js";
+import { protectedMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 router.post("/register", registerUser);
 
-
 router.post("/login", loginUser);
 
-router.get("/logout", logoutUser);
+router.get("/logout", protectedMiddleware, logoutUser);
 
 router.get("/getuser", protectedMiddleware, getCurrentUser);
 
-router.get("/admin", protectedMiddleware, ownerMiddleware, (req, res) => {
-  res.status(200).json({ message: "Admin access granted" });
-});
+router.get("/users", protectedMiddleware, AllUser)
+
+router.put("/users/:id", protectedMiddleware, updateUser)
+
+router.delete("/users/:id",protectedMiddleware, deleteUser)
 
 export default router;

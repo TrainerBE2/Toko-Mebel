@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios"
 import {toast} from "react-toastify"
+
 const BarMenu = [
   {
     title: "Dashboard",
@@ -13,11 +14,6 @@ const BarMenu = [
     title: "Admin",
     path: "/admin/users",
     icon: "ri-admin-line",
-  },
-  {
-    title: "Categories",
-    path: "/admin/category",
-    icon: "ri-folders-line",
   },
   {
     title: "Products",
@@ -38,17 +34,17 @@ const BarMenu = [
 const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
   const navigate = useNavigate();
 
-  const logout = async () => {
+  const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/api/v1/auth/logout", {
-        withCredentials: true,
-      });
-      navigate("/Account");
+      await axios.get("http://localhost:5000/api/v1/auth/logout")
+      navigate("/account/login");
       toast.success("Successfully logged out");
     } catch (error) {
       toast.error("Failed to log out");
     }
   };
+
+  
   return (
     <aside
       id="sidebar"
@@ -80,7 +76,7 @@ const Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
           </li>
         ))}
       </ul>
-      <button className="btn btn-sm btn-danger fs-6 mx-3" onClick={logout}>
+      <button className="btn btn-sm btn-danger fs-6 mx-3" onClick={handleLogout}>
         Logout <i className="ri-logout-box-r-line ms-2"></i>
       </button>
     </aside>

@@ -6,13 +6,14 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 const FormCustomers = () => {
   const [customer, setCustomer] = useState({
     id: "",
+    role: "",
     name: "",
-    phone: "",
+    // phone: "",
     email: "",
-    gender: "",
-    birthdate: "",
-    city: "",
-    address: "",
+    // gender: "",
+    // birthdate: "",
+    // city: "",
+    // address: "",
     password: "",
   });
   const navigate = useNavigate();
@@ -34,13 +35,13 @@ const FormCustomers = () => {
     e.preventDefault();
     if (isEditing) {
       await axios.put(
-        `http://localhost:5000/api/v1/customers/${customer.id}`,
+        `http://localhost:5000/api/v1/auth/users/${customer.id}`,
         customer
       );
     } else {
-      await axios.post("http://localhost:5000/api/v1/customers", customer);
+      await axios.post("http://localhost:5000/api/v1/auth/users", customer);
     }
-    navigate("admin/customers");
+    navigate("/admin/customers");
   };
   return (
     <Container>
@@ -57,8 +58,9 @@ const FormCustomers = () => {
                   <Form.Control
                     type="text"
                     placeholder="Customer Name"
-                    value={customer.name}
-                    onChange={handleChange}
+                    value={customer.role}
+                    readOnly
+                    className="bg-secondary-subtle"
                   />
                 </Form.Group>
               </Col>
@@ -67,8 +69,9 @@ const FormCustomers = () => {
                   <Form.Label>No. Telp</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Phone number"
-                    value={customer.price}
+                    placeholder="Your Name"
+                    name="name"
+                    value={customer.name}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -84,7 +87,7 @@ const FormCustomers = () => {
                   />
                 </Form.Group>
               </Col>
-              <Col>
+              {/* <Col>
                 <Form.Group>
                   <Form.Label>Gender</Form.Label>
                   <Form.Select value={customer.gender} onChange={handleChange}>
@@ -93,8 +96,8 @@ const FormCustomers = () => {
                     <option>Female</option>
                   </Form.Select>
                 </Form.Group>
-              </Col>
-              <Col>
+              </Col> */}
+              {/* <Col>
                 <Form.Group>
                   <Form.Label>Birthdate</Form.Label>
                   <Form.Control
@@ -103,8 +106,8 @@ const FormCustomers = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col>
-              <Col>
+              </Col> */}
+              {/* <Col>
                 <Form.Group>
                   <Form.Label>City</Form.Label>
                   <Form.Control
@@ -114,8 +117,8 @@ const FormCustomers = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col>
-              <Col lg="12" md="12">
+              </Col> */}
+              {/* <Col lg="12" md="12">
                 <Form.Group>
                   <Form.Label>Address</Form.Label>
                   <Form.Control
@@ -126,8 +129,8 @@ const FormCustomers = () => {
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Col>
-              <Col>
+              </Col> */}
+              {/* <Col>
                 <Form.Group>
                   <Form.Label>Image</Form.Label>
                   <Form.Control
@@ -137,8 +140,16 @@ const FormCustomers = () => {
                     }
                   />
                 </Form.Group>
-              </Col>
+              </Col> */}
             </Row>
+            <Button
+              variant="primary"
+              size="sm"
+              className="me-2"
+              onClick={() => navigate("/admin/customers")}
+            >
+              <i className="ri-arrow-left-line"></i> Back
+            </Button>
             <Button type="reset" variant="danger" size="sm" className="me-2">
               <i className="ri-repeat-line"></i> Reset
             </Button>

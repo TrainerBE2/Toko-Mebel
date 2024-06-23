@@ -28,11 +28,17 @@ const createSendResToken = (user, statusCode, res) => {
 export const registerUser = asyncHandler(async (req, res) => {
   const isOwner = (await User.countDocuments()) === 0;
   const role = isOwner ? "owner" : "user";
+  const { name, email, password, confirmPassword } = req.body;
+
+  if (password !== confirmPassword) {
+    res.status(400);
+    throw new Error("Password and Confirm Password do not match");
+  }
   const createUser = await User.create({
     role: role,
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
+    name: name,
+    email: email,
+    password: password,
   });
 
   createSendResToken(createUser, 201, res);
@@ -76,3 +82,36 @@ export const logoutUser = async (req, res) => {
     message: "Logout Success"
   })
 }
+
+export const AllUser = asyncHandler(async (req, res) => {
+  const user = await User.find();
+
+  return res.status(200).json({
+    data: user,
+    message: "Berhasil tampil semua order",
+  });
+});
+
+export const deleteUser = asyncHandler(async (req, res) => {
+  const paramId = req.params.id;
+  await User.findByIdAndDelete(paramId);
+
+  return res.status(200).json({
+    message: "Berhasil delete User",
+  });
+});
+
+export const updateUser = asyncHandler(async (req, res) => {
+  const paramId = req.params.id;
+
+  const updateUser = await User.findByIdAndUpdate(paramId, req.body, {
+    runValidators: false,
+    new: true,
+  });
+
+  return res.status(201).json({
+    message: "Berhasil update user",
+    data: updateUser,
+  });
+});
+
