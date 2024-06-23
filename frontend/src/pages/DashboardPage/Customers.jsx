@@ -1,25 +1,49 @@
-import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import { Container, Row, Col, Table, Button, Modal, } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify"
 
 const Customers = () => {
-  const [customers, setCustomers] = useState([]);
+  const [show, setShow] = useState(false);
+  const [dataCustomers, setDataCustomers] = useState([]);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
   const navigate = useNavigate();
 
+  const APIUrl = "http://localhost:5000";
+
   const fetchCustomers = async () => {
-    const response = await axios.get("http://localhost:5000/api/v1/customers");
-    setCustomers(response.data);
+    try {
+      const response = await axios.get(APIUrl + "/api/v1/auth/users");
+      setDataCustomers(response.data.data); // Access the 'data' property from the response
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to fetch customers.");
+    }
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/v1/customers/${id}`);
-    fetchCustomers();
+    try {
+      await axios.delete(APIUrl + `/api/v1/auth/users/${id}`);
+      toast.success("Successfully deleted Customer");
+      fetchCustomers();
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to delete customer.");
+    }
   };
 
   useEffect(() => {
     fetchCustomers();
   }, []);
+
+  const handleShow = (customer) => {
+    setSelectedCustomer(customer);
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+    setSelectedCustomer(null);
+  };
   return (
     <Container>
       <div className="table-responsive overflow-x-auto fm-2">
@@ -66,47 +90,56 @@ const Customers = () => {
               <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Image</th>
+                  {/* <th>Image</th> */}
+                  <th>Role</th>
                   <th>Name</th>
-                  <th>No. Telp</th>
-                  <th>Gender</th>
+                  <th>Email</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {customers.map((customer, index) => (
-                  <tr key={customer.id}>
+                {dataCustomers.map((customer, index) => (
+                  <tr key={customer._id}>
                     <td>{index + 1}</td>
-                    <td>
+                    <td>{customer.role}</td>
+                    {/* <td>
                       <img
                         src={customer.image}
                         alt={customer.name}
                         className="img-thumbnail"
                         width="100"
                       />
-                    </td>
+                    </td> */}
                     <td>{customer.name}</td>
-                    <td>{customer.phone}</td>
-                    <td>{customer.gender}</td>
+                    <td>{customer.email}</td>
+                    {/* <td>{customer.gender}</td> */}
                     <td className="d-flex gap-2 justify-content-center">
-                      <Button variant="info">Detail</Button>
+                      <Button
+                        variant="info"
+                        size="sm"
+                        onClick={() => handleShow(customer)}
+                      >
+                        <i className="ri-eye-line"></i>
+                      </Button>
 
                       <Button
                         variant="warning"
+                        size="sm"
                         onClick={() =>
-                          navigate(`/edit/${customer.id}`, {
+                          navigate(`edit/${customer._id}`, {
                             state: { customer },
                           })
                         }
                       >
-                        Edit
+                        <i className="ri-edit-box-line"></i>
                       </Button>
 
                       <Button
                         variant="danger"
-                        onClick={() => handleDelete(customer.id)}
+                        size="sm"
+                        onClick={() => handleDelete(customer._id)}
                       >
-                        Delete
+                        <i className="ri-delete-bin-line"></i>
                       </Button>
                     </td>
                   </tr>
@@ -116,6 +149,23 @@ const Customers = () => {
           </div>
         </div>
       </div>
+
+      {selectedCustomer && (
+        <Modal show={show} onHide={handleClose} className="fm-2">
+          <Modal.Header closeButton>
+            <Modal.Title>{selectedCustomer.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {/* <Card.Img
+                src={APIUrl + selectedCustomer.image}
+                className="w-50 d-block mx-auto"
+              /> */}
+            {selectedCustomer.role} <br />
+            {selectedCustomer.name} <br />
+            {selectedCustomer.email}
+          </Modal.Body>
+        </Modal>
+      )}
     </Container>
   );
 };

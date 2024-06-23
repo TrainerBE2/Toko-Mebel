@@ -8,18 +8,17 @@ dotenv.config()
 const app = express();
 const port = process.env.PORT
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
-
 // Middlewares
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('./public'))
+
 import authRouter from "./routers/authRouter.js"
 import productRouter from "./routers/productRouter.js"
 import OrderRouter from "./routers/orderRouter.js"

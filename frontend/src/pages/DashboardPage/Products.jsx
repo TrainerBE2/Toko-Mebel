@@ -1,25 +1,67 @@
-import { Container, Row, Col, Table, Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Button,
+  Modal,
+  Card,
+  Accordion,
+  ListGroup,
+} from "react-bootstrap";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "../../styles/Dashboard.css"
+
+const formatToIDR = (price) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(price);
+};
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [show, setShow] = useState(false);
+  const [dataProducts, setDataProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
 
+  const APIUrl = "http://localhost:5000"
+
   const fetchProducts = async () => {
-    const response = await axios.get("http://localhost:5000/api/v1/product");
-    setProducts(response.data);
+    try {
+      const response = await axios.get(APIUrl + "/api/v1/product");
+      setDataProducts(response.data.data); // Access the 'data' property from the response
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to fetch products.");
+    }
   };
 
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/v1/product/${id}`);
-    fetchProducts();
-  };
+    const handleDelete = async (id) => {
+      try {
+        await axios.delete(APIUrl + `/api/v1/product/${id}`, selectedProduct);
+        toast.success("Successfully deleted product");
+        fetchProducts();
+      } catch (err) {
+        toast.error(err.response?.data?.message || "Failed to delete product.");
+      }
+    };
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const handleShow = (product) => {
+    setSelectedProduct(product);
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+    setSelectedProduct(null);
+  };
   return (
     <Container>
       <div className="table-responsive overflow-x-auto fm-2">
@@ -75,45 +117,49 @@ const Products = () => {
                 </tr>
               </thead>
               <tbody>
-                {products.map((product, index) => (
-                  <tr key={product.id}>
+                {dataProducts.map((product, index) => (
+                  <tr key={product._id}>
                     <td>{index + 1}</td>
                     <td>
                       <img
-                        src={product.image}
+                        src={APIUrl + product.image}
                         alt={product.name}
                         className="img-thumbnail"
-                        width="100"
+                        width="75"
                       />
                     </td>
                     <td>{product.name}</td>
-                    <td>{product.price}</td>
+                    <td>{formatToIDR(product.price)}</td>
                     <td>{product.stock}</td>
-                    <td>{product.category_id}</td>
-                    <td className="d-flex gap-2 justify-content-center">
-                      <Button
-                        variant="info"
-                      >
-                        Detail
-                      </Button>
-
-                      <Button
-                        variant="warning"
-                        onClick={() =>
-                          navigate(`edit/${product.id}`, {
-                            state: { product },
-                          })
-                        }
-                      >
-                        Edit
-                      </Button>
-
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDelete(product.id)}
-                      >
-                        Delete
-                      </Button>
+                    <td>{product.category}</td>
+                    <td>
+                      <div className="d-flex gap-2 justify-content-center align-items-center">
+                        <Button
+                          variant="info"
+                          size="sm"
+                          onClick={() => handleShow(product)}
+                        >
+                          <i className="ri-eye-line"></i>
+                        </Button>
+                        <Button
+                          variant="warning"
+                          size="sm"
+                          onClick={() =>
+                            navigate(`edit/${product.id}`, {
+                              state: { product },
+                            })
+                          }
+                        >
+                          <i className="ri-edit-box-line"></i>
+                        </Button>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => handleDelete(product._id)}
+                        >
+                          <i className="ri-delete-bin-line"></i>
+                        </Button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -122,6 +168,52 @@ const Products = () => {
           </div>
         </div>
       </div>
+
+      {selectedProduct && (
+        <Modal show={show} onHide={handleClose} className="fm-2">
+          <Modal.Header closeButton>
+            <Modal.Title>{selectedProduct.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Card className="border-0">
+              <Card.Img
+                src={APIUrl + selectedProduct.image}
+                className="w-50 d-block mx-auto"
+              />
+              <div className="border border-secondary-subtle mt-3 ">
+                <ListGroup className="list-group-flush">
+                  <ListGroup.Item>
+                    <span className="fw-semibold me-2">Harga:</span>
+                    {formatToIDR(selectedProduct.price)}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <span className="fw-semibold me-2">Category:</span>
+                    {selectedProduct.category}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <span className="fw-semibold me-2">Stock:</span>
+                    {selectedProduct.stock}
+                  </ListGroup.Item>
+                </ListGroup>
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Item>
+                    <Accordion.Header className="fw-medium">
+                      Summary
+                    </Accordion.Header>
+                    <Accordion.Body>{selectedProduct.summary}</Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header>Description</Accordion.Header>
+                    <Accordion.Body>
+                      {selectedProduct.description}
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </div>
+            </Card>
+          </Modal.Body>
+        </Modal>
+      )}
     </Container>
   );
 };

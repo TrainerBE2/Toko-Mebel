@@ -1,14 +1,54 @@
 import "../../styles/index.css";
 import BannerHeader from "../../common/Banner/BannerHeader";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import {toast} from "react-toastify"
+import { useEffect, useState } from "react";
+
 
 const ProfilUser = () => {
+
+  const handleLogout = async () => {
+    try {
+      await axios.get("http://localhost:5000/api/v1/auth/logout")
+      toast.success("Successfully logged out")
+      localStorage.removeItem("user")
+      navigate("/account/login")
+    } catch (err) {
+      toast.error(err.response.data.message)
+    }
+  }
+
+  const [dataCustomers, setDataCustomers] = useState({
+    name: "",
+    email: "",
+    
+    // phone: "",
+    // address: "",
+    // city: "",
+  });
+  const navigate = useNavigate();
+
+  const APIUrl = "http://localhost:5000";
+
+  useEffect(() => {
+    const GetCustomers = async () => {
+      try {
+        const response = await axios.get(APIUrl + "/api/v1/auth/getuser", dataCustomers);
+        setDataCustomers(response.data.user);
+      } catch (err) {
+        toast.error(err.response?.data?.message || "Failed to fetch customers.");
+      }
+    };
+
+    GetCustomers();
+  }, []);
+
   return (
     <section id="profile" className="bg-white overflow-hidden">
       <BannerHeader bannerTitle="Your Profile" />
-      <Container className="pt-3 pb-5">
-
+      <Container className="py-3 py-md-5">
         <Row lg="2">
           <Col lg="4">
             <Card className="fm-2 p-3">
@@ -35,6 +75,13 @@ const ProfilUser = () => {
             <Button variant="base" className="fw-bold w-100 border my-3 p-2">
               <i className="ri-key-fill me-3"></i>Change Password
             </Button>
+            <Button
+              variant="danger"
+              className="fw-medium w-100 border p-2"
+              onClick={handleLogout}
+            >
+              <i className="ri-logout-box-line me-2"></i>Logout
+            </Button>
           </Col>
           <Col lg="8">
             <Card>
@@ -50,7 +97,9 @@ const ProfilUser = () => {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     className="form-control"
+                    value={dataCustomers.name}
                     placeholder="Enter your full name"
                   />
                 </Card.Text>
@@ -61,15 +110,13 @@ const ProfilUser = () => {
 
                   <input type="date" id="ttl" className="form-control" />
                 </Card.Text>
-                <Card.Text className="fs-7 px-3">
+                <Card.Text className="fs-7 px-3 mb-3">
                   <label htmlFor="name" className="form-label fs-6">
                     Gender:
                   </label>
 
                   <select className="form-select">
-                    <option selected disabled>
-                      Choose gender
-                    </option>
+                    <option>Choose gender</option>
                     <option value="">Male</option>
                     <option value="">Female</option>
                   </select>
@@ -83,8 +130,9 @@ const ProfilUser = () => {
                   </label>
 
                   <input
-                    type="text"
-                    id="name"
+                    type="email"
+                    id="email"
+                    value={dataCustomers.email}
                     className="form-control"
                     placeholder="Enter your email address"
                   />

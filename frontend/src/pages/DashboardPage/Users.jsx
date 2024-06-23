@@ -2,206 +2,125 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Container,
-  Table,
+  Card,
   Button,
-  Modal,
-  Form,
   Row,
   Col,
 } from "react-bootstrap";
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
-  const [show, setShow] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
-    id: "",
+  const [dataAdmin, setDataAdmin] = useState({
     role: "",
     name: "",
     email: "",
-    password: "",
-  });
-
-  const handleClose = () => setShow(false);
-  const handleShow = (user) => {
-    setCurrentUser(user);
-    setShow(true);
-  };
-
-  const fetchUsers = async () => {
-    const response = await axios.get("http://localhost:5000/api/v1/users");
-    setUsers(response.data);
-  };
-
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/v1/users/${id}`);
-    fetchUsers();
-  };
-
-  const handleSave = async () => {
-    if (currentUser.id) {
-      await axios.put(
-        `http://localhost:5000/api/v1/users/${currentUser.id}`,
-        currentUser
-      );
-    } else {
-      await axios.post("http://localhost:5000/api/v1/users", currentUser);
-    }
-    fetchUsers();
-    handleClose();
-  };
+    password: ""
+  })
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    const fetchDataAdmin = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/v1/auth/getuser", dataAdmin);
+        setDataAdmin(response.data.user);
+      } catch (error) {
+        console.error("Failed to fetch data admin", error);
+      }
+    };
+    fetchDataAdmin();
+  },[dataAdmin])
 
   return (
-    <Container>
-      <div className="table-responsive overflow-x-auto fm-2">
-        <div className="card text-bg-dark border border-secondary">
-          <div className="card-header d-flex flex-column flex-md-row justify-content-between align-items-center p-3">
-            <Row xs="2" md="3" className="g-2 align-items-center w-100">
-              <Col lg="4">
-                <h3 className="card-title">Data User</h3>
-              </Col>
-              <Col lg="4" xs="12" className="order-last order-md-0">
-                <div className="d-flex">
-                  <input
-                    type="text"
-                    className="form-control form-control-sm rounded-end-0"
-                    placeholder="Search Users..."
-                  />
-                  <Button
-                    variant="warning"
-                    className="input-group-text rounded-start-0"
-                    size="sm"
-                  >
-                    <i className="ri-search-line"></i>
-                  </Button>
-                </div>
-              </Col>
-              <Col lg="4" className="text-end">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  onClick={() =>
-                    handleShow({
-                      id: "",
-                      role: "",
-                      name: "",
-                      email: "",
-                      password: "",
-                    })
-                  }
-                >
-                  Add User
-                </Button>
-              </Col>
-            </Row>
-          </div>
-          <div className="card-body border-top border-secondary table-responsive">
-            <Table
-              striped
-              bordered
-              hover
-              id="tableUser"
-              className="table-dark p-3 text-center"
-            >
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Role</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user, index) => (
-                  <tr key={user.id}>
-                    <td>{index + 1}</td>
-                    <td>{user.role}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td className="d-flex gap-2 justify-content-center">
-                      <Button variant="info" onClick={() => handleShow(user)}>
-                        View/Edit
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDelete(user.id)}
-                      >
-                        Delete
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        </div>
-      </div>
+    <Container className="p-3 fm-2">
+      <Row lg="2">
+        <Col lg="4">
+          <Card className="fm-2 p-3">
+            <Card.Img
+              variant="top"
+              src="https://via.placeholder.com/300x300"
+              className="d-block rounded mx-auto object-fit-cover" style={{maxWidth: "250px", maxHeight: "200px"}}
+            />
+            <Card.Body className="px-0">
+              <Button variant="base" className="w-100 fs-7 py-2 border fw-bold">
+                Choose Photo
+              </Button>
+            </Card.Body>
+            
+          </Card>
+          {/* <Button variant="light" className="fw-semibold w-100 border my-3 p-2">
+            <i className="ri-key-fill me-3"></i>Change Password
+          </Button> */}
+         
+        </Col>
+        <Col lg="8">
+          <Card>
+            <Card.Body className="fm-2 p-0">
+              <Card.Title className="fw-bold border-bottom p-3">
+                Data Admin
+              </Card.Title>
+              <Card.Text className="fs-7 px-3 mb-2">
+                <label htmlFor="name" className="form-label fs-6">
+                  Role:
+                </label>
 
-      <Modal show={show} onHide={handleClose} className="text-dark">
-        <Modal.Header closeButton>
-          <Modal.Title>{currentUser.id ? "Edit User" : "Add User"}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formRole" className="mb-2">
-              <Form.Label>Role</Form.Label>
-              <Form.Control
-                type="text"
-                value={currentUser.role}
-                placeholder="Masukkan Role Anda ..."
-                onChange={(e) =>
-                  setCurrentUser({ ...currentUser, role: e.target.value })
-                }
-              />
-            </Form.Group>
-            <Form.Group controlId="formName" className="mb-2">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={currentUser.name}
-                placeholder="Masukkan Nama Anda ..."
-                onChange={(e) =>
-                  setCurrentUser({ ...currentUser, name: e.target.value })
-                }
-              />
-            </Form.Group>
-            <Form.Group controlId="formEmail" className="mb-2">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                value={currentUser.email}
-                placeholder="Masukkan Email Anda ..."
-                onChange={(e) =>
-                  setCurrentUser({ ...currentUser, email: e.target.value })
-                }
-              />
-            </Form.Group>
-            <Form.Group controlId="formPassword" className="mb-2">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                value={currentUser.password}
-                placeholder="Masukkan Password Anda ..."
-                onChange={(e) =>
-                  setCurrentUser({ ...currentUser, password: e.target.value })
-                }
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+                <input
+                  type="text"
+                  id="role"
+                  readOnly
+                  className="form-control bg-secondary-subtle"
+                  value={dataAdmin.role}
+                  placeholder="Enter your full name"
+                />
+              </Card.Text>
+              <Card.Text className="fs-7 px-3 mb-2">
+                <label htmlFor="name" className="form-label fs-6">
+                  Full Name:
+                </label>
+
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="form-control"
+                  value={dataAdmin.name}
+                  placeholder="Enter full name"
+                />
+              </Card.Text>
+              <Card.Text className="fs-7 px-3 mb-2">
+                <label htmlFor="name" className="form-label fs-6">
+                  Email:
+                </label>
+
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  className="form-control"
+                  value={dataAdmin.email}
+                  placeholder="Enter email address"
+                />
+              </Card.Text>
+              <Card.Text className="fs-7 px-3 mb-2">
+                <label htmlFor="name" className="form-label fs-6">
+                  Password:
+                </label>
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="form-control"
+                  value={dataAdmin.password}
+                  placeholder="Enter new password"
+                />
+              </Card.Text>
+              
+            </Card.Body>
+            {/* <Card.Footer className="fm-2 d-flex gap-2">
+              <Button variant="warning">Edit</Button>
+              <Button variant="success">Save</Button>
+            </Card.Footer> */}
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

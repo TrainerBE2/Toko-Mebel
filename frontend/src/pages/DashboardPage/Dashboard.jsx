@@ -1,6 +1,25 @@
 
+import { useEffect, useState } from "react";
 import "../../styles/Dashboard.css";
+import axios from "axios"
 const Dashboard = () => {
+  const [productLength, setProductLength] = useState(0)
+
+  const APIUrl = "http://localhost:5000"
+
+  useEffect(() => {
+    const getLength = async () => {
+      try {
+        const productLength = await axios.get(APIUrl + "/api/v1/product")
+        setProductLength(productLength.data.length)
+
+      } catch (err) {
+        console.log(err.res.data.message)
+      }
+    }
+
+    getLength()
+  },[])
   
   return (
     <div className="container fm-2">
@@ -14,7 +33,7 @@ const Dashboard = () => {
               <h3>PRODUCTS</h3>
               <i className="ri-box-3-line card_icon"></i>
             </div>
-            <h1 className="p-3">{0}</h1>
+            <h1 className="p-3">{productLength}0</h1>
           </div>
         </div>
         <div className="col">

@@ -39,7 +39,7 @@ const FormProducts = () => {
     } else {
       await axios.post("http://localhost:5000/api/v1/product", product);
     }
-    navigate("admin/products");
+    navigate("/admin/products");
   };
 
   return (
@@ -88,13 +88,15 @@ const FormProducts = () => {
                 <Form.Group>
                   <Form.Label>Category</Form.Label>
                   <Form.Select
-                    value={product.category_id}
+                    value={product.category}
                     onChange={handleChange}
                   >
                     <option>-- Select Category --</option>
-                    <option>Category 1</option>
-                    <option>Category 2</option>
-                    <option>Category 3</option>
+                    <option value="Bed">Bed</option>
+                    <option value="Chair">Chair</option>
+                    <option value="Sofa">Sofa</option>
+                    <option value="Lamps">Lamps</option>
+                    <option value="Wardrobe">Wardrobe</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -133,6 +135,11 @@ const FormProducts = () => {
                 </Form.Group>
               </Col>
             </Row>
+            <Button variant="primary" size="sm" className="me-2"
+              onClick={()=>navigate("/admin/products")}
+            >
+              <i className="ri-arrow-left-line"></i> Back
+            </Button>
             <Button type="reset" variant="danger" size="sm" className="me-2">
               <i className="ri-repeat-line"></i> Reset
             </Button>

@@ -60,6 +60,14 @@ main {
   font-size: 25px;
 }
 
+.accodion-item{
+  border-radius: none !important;
+}
+
+.accordion-item button{
+  font-weight: 600;
+}
+
 @media (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
